@@ -168,9 +168,6 @@ server:
       #    hosts:
       #      - chart-example.local
 
-    metrics:
-      prometheus: {}
-      # timerType: histogram
     podAnnotations: {}
     podLabels: {}
     resources: {}
@@ -185,9 +182,6 @@ server:
     service:
       # type: ClusterIP
       port: 7234
-    metrics:
-      prometheus: {}
-      # timerType: histogram
     podAnnotations: {}
     podLabels: {}
     resources: {}
@@ -202,9 +196,6 @@ server:
     service:
       # type: ClusterIP
       port: 7235
-    metrics:
-      prometheus: {}
-      # timerType: histogram
     podAnnotations: {}
     podLabels: {}
     resources: {}
@@ -219,10 +210,6 @@ server:
     service:
       # type: ClusterIP
       port: 7239
-    metrics:
-      # enabled: false
-      prometheus: {}
-      # timerType: histogram
     podAnnotations: {}
     podLabels: {}
     resources: {}
