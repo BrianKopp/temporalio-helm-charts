@@ -28,34 +28,6 @@ server:
       enabled: true
     # Additional tags to be added to Prometheus metrics
     tags: {}
-    # Enable Prometheus ServiceMonitor
-    # Use this if you installed the Prometheus Operator (https://github.com/coreos/prometheus-operator).
-    serviceMonitor:
-      enabled: false
-      interval: 30s
-      # Set additional lables to all the ServiceMonitor resources
-      additionalLabels: {}
-      #  label1: value1
-      #  label2: value2
-      # Set Prometheus metric_relabel_configs via ServiceMonitor
-      # Use metricRelabelings to adjust metric and label names as needed
-      metricRelabelings: []
-      # - action: replace
-      #   sourceLabels:
-      #   - exported_namespace
-      #   targetLabel: temporal_namespace
-      # - action: replace
-      #   regex: service_errors_(.+)
-      #   replacement: ${1}
-      #   sourceLabels:
-      #   - __name__
-      #   targetLabel: temporal_error_kind
-      # - action: replace
-      #   regex: service_errors_.+
-      #   replacement: temporal_service_errors
-      #   sourceLabels:
-      #   - __name__
-      #   targetLabel: __name__
     prometheus:
       timerType: histogram
   podAnnotations: {}
@@ -203,8 +175,6 @@ server:
     metrics:
       annotations:
         enabled: true
-      serviceMonitor: {}
-      # enabled: false
       prometheus: {}
       # timerType: histogram
     podAnnotations: {}
@@ -224,8 +194,6 @@ server:
     metrics:
       annotations:
         enabled: true
-      serviceMonitor: {}
-      # enabled: false
       prometheus: {}
       # timerType: histogram
     podAnnotations: {}
@@ -245,8 +213,6 @@ server:
     metrics:
       annotations:
         enabled: false
-      serviceMonitor: {}
-      # enabled: false
       prometheus: {}
       # timerType: histogram
     podAnnotations: {}
@@ -266,7 +232,6 @@ server:
     metrics:
       annotations:
         enabled: true
-      serviceMonitor: {}
       # enabled: false
       prometheus: {}
       # timerType: histogram
