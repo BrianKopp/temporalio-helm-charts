@@ -145,6 +145,7 @@ server:
       tags: {}
       prometheus:
         timerType: histogram
+        listenAddress: "0.0.0.0:9090"
   frontend:
     service:
       annotations: {} # Evaluated as template
