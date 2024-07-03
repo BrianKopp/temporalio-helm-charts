@@ -334,10 +334,6 @@ elasticsearch:
   username: ""
   password: ""
   visibilityIndex: "temporal_visibility_v1_dev"
-prometheus:
-  enabled: true
-  nodeExporter:
-    enabled: false
 cassandra:
   enabled: true
   persistence:
