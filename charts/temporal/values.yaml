@@ -22,10 +22,6 @@ server:
   # Global default settings (can be overridden per service)
   replicaCount: 1
   metrics:
-    # Annotate pods directly with Prometheus annotations.
-    # Use this if you installed Prometheus from a Helm chart.
-    annotations:
-      enabled: true
     # Additional tags to be added to Prometheus metrics
     tags: {}
     prometheus:
@@ -173,8 +169,6 @@ server:
       #      - chart-example.local
 
     metrics:
-      annotations:
-        enabled: true
       prometheus: {}
       # timerType: histogram
     podAnnotations: {}
@@ -192,8 +186,6 @@ server:
       # type: ClusterIP
       port: 7234
     metrics:
-      annotations:
-        enabled: true
       prometheus: {}
       # timerType: histogram
     podAnnotations: {}
@@ -211,8 +203,6 @@ server:
       # type: ClusterIP
       port: 7235
     metrics:
-      annotations:
-        enabled: false
       prometheus: {}
       # timerType: histogram
     podAnnotations: {}
@@ -230,8 +220,6 @@ server:
       # type: ClusterIP
       port: 7239
     metrics:
-      annotations:
-        enabled: true
       # enabled: false
       prometheus: {}
       # timerType: histogram
