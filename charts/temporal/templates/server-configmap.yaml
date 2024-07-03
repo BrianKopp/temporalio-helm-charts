@@ -100,6 +100,7 @@ data:
           {{- with $.Values.server.metrics.tags }}
           {{- toYaml . | nindent 10 }}
           {{- end }}
+        # TODO this piece isn't documented in the values.yaml, why not just default it and include it here
         {{- if $.Values.server.config.prometheus }}
         prometheus:
           {{- with $.Values.server.config.prometheus }}
