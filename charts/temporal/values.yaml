@@ -21,11 +21,6 @@ server:
     pullPolicy: IfNotPresent
   # Global default settings (can be overridden per service)
   replicaCount: 1
-  metrics:
-    # Additional tags to be added to Prometheus metrics
-    tags: {}
-    prometheus:
-      timerType: histogram
   podAnnotations: {}
   podLabels: {}
   secretLabels: {}
@@ -145,6 +140,11 @@ server:
           maxConnLifetime: "1h"
           # connectAttributes:
           #   tx_isolation: 'READ-COMMITTED'
+    metrics:
+      # Additional tags to be added to Prometheus metrics
+      tags: {}
+      prometheus:
+        timerType: histogram
   frontend:
     service:
       annotations: {} # Evaluated as template
