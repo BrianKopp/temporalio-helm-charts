@@ -21,43 +21,6 @@ server:
     pullPolicy: IfNotPresent
   # Global default settings (can be overridden per service)
   replicaCount: 1
-  metrics:
-    # Annotate pods directly with Prometheus annotations.
-    # Use this if you installed Prometheus from a Helm chart.
-    annotations:
-      enabled: true
-    # Additional tags to be added to Prometheus metrics
-    tags: {}
-    # Enable Prometheus ServiceMonitor
-    # Use this if you installed the Prometheus Operator (https://github.com/coreos/prometheus-operator).
-    serviceMonitor:
-      enabled: false
-      interval: 30s
-      # Set additional lables to all the ServiceMonitor resources
-      additionalLabels: {}
-      #  label1: value1
-      #  label2: value2
-      # Set Prometheus metric_relabel_configs via ServiceMonitor
-      # Use metricRelabelings to adjust metric and label names as needed
-      metricRelabelings: []
-      # - action: replace
-      #   sourceLabels:
-      #   - exported_namespace
-      #   targetLabel: temporal_namespace
-      # - action: replace
-      #   regex: service_errors_(.+)
-      #   replacement: ${1}
-      #   sourceLabels:
-      #   - __name__
-      #   targetLabel: temporal_error_kind
-      # - action: replace
-      #   regex: service_errors_.+
-      #   replacement: temporal_service_errors
-      #   sourceLabels:
-      #   - __name__
-      #   targetLabel: __name__
-    prometheus:
-      timerType: histogram
   podAnnotations: {}
   podLabels: {}
   secretLabels: {}
@@ -177,6 +140,12 @@ server:
           maxConnLifetime: "1h"
           # connectAttributes:
           #   tx_isolation: 'READ-COMMITTED'
+    metrics:
+      # Additional tags to be added to Prometheus metrics
+      tags: {}
+      prometheus:
+        timerType: histogram
+        listenAddress: "0.0.0.0:9090"
   frontend:
     service:
       annotations: {} # Evaluated as template
@@ -200,13 +169,6 @@ server:
       #    hosts:
       #      - chart-example.local
 
-    metrics:
-      annotations:
-        enabled: true
-      serviceMonitor: {}
-      # enabled: false
-      prometheus: {}
-      # timerType: histogram
     podAnnotations: {}
     podLabels: {}
     resources: {}
@@ -221,13 +183,6 @@ server:
     service:
       # type: ClusterIP
       port: 7234
-    metrics:
-      annotations:
-        enabled: true
-      serviceMonitor: {}
-      # enabled: false
-      prometheus: {}
-      # timerType: histogram
     podAnnotations: {}
     podLabels: {}
     resources: {}
@@ -242,13 +197,6 @@ server:
     service:
       # type: ClusterIP
       port: 7235
-    metrics:
-      annotations:
-        enabled: false
-      serviceMonitor: {}
-      # enabled: false
-      prometheus: {}
-      # timerType: histogram
     podAnnotations: {}
     podLabels: {}
     resources: {}
@@ -263,13 +211,6 @@ server:
     service:
       # type: ClusterIP
       port: 7239
-    metrics:
-      annotations:
-        enabled: true
-      serviceMonitor: {}
-      # enabled: false
-      prometheus: {}
-      # timerType: histogram
     podAnnotations: {}
     podLabels: {}
     resources: {}
@@ -381,10 +322,6 @@ elasticsearch:
   username: ""
   password: ""
   visibilityIndex: "temporal_visibility_v1_dev"
-prometheus:
-  enabled: true
-  nodeExporter:
-    enabled: false
 cassandra:
   enabled: true
   persistence:
